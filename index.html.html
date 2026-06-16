@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lojain Othman — Havenly Cosmetics</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FAF8F5;
+    --warm-white: #FFFEFB;
+    --charcoal: #1A1A1A;
+    --mid: #6B6660;
+    --muted: #A09A94;
+    --border: #E8E2DC;
+    --accent: #C8A882;
+    --accent-light: #F0E8DD;
+    --rose: #D4A5A5;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    font-size: 15px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,248,245,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 18px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .nav-name { font-family: 'Playfair Display', serif; font-size: 16px; letter-spacing: 0.02em; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a {
+    text-decoration: none; color: var(--mid); font-size: 13px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--charcoal); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 120px 40px 80px;
+    max-width: 1000px; margin: 0 auto;
+  }
+  .hero-inner { max-width: 680px; }
+  .hero-eyebrow {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 28px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block; width: 32px; height: 1px; background: var(--accent);
+  }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 6vw, 68px);
+    line-height: 1.1;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    margin-bottom: 28px;
+  }
+  h1 em { font-style: italic; color: var(--mid); }
+  .hero-sub {
+    font-size: 17px; color: var(--mid); line-height: 1.8;
+    max-width: 540px; margin-bottom: 44px;
+  }
+  .btn {
+    display: inline-block;
+    padding: 14px 32px;
+    background: var(--charcoal);
+    color: var(--warm-white);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn:hover { background: #333; transform: translateY(-1px); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--charcoal);
+    border: 1px solid var(--charcoal);
+    margin-left: 16px;
+  }
+  .btn-ghost:hover { background: var(--charcoal); color: var(--warm-white); }
+
+  /* DIVIDER */
+  .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+  /* SECTIONS */
+  section { padding: 100px 40px; max-width: 1000px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 60px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .section-label::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 400; line-height: 1.2;
+    margin-bottom: 20px;
+  }
+
+  /* ANGLE SECTION */
+  .angle-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 48px;
+  }
+  .angle-card {
+    background: var(--warm-white);
+    padding: 36px 32px;
+    border: 1px solid var(--border);
+  }
+  .angle-card:nth-child(1) { border-bottom: none; border-right: none; }
+  .angle-card:nth-child(2) { border-bottom: none; }
+  .angle-card:nth-child(3) { border-right: none; }
+  .angle-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px; color: var(--accent-light);
+    line-height: 1; margin-bottom: 16px;
+  }
+  .angle-card h3 { font-size: 16px; font-weight: 500; margin-bottom: 10px; }
+  .angle-card p { font-size: 14px; color: var(--mid); line-height: 1.7; }
+
+  /* CAMPAIGN SECTION */
+  .campaign-hero {
+    background: var(--charcoal);
+    color: var(--warm-white);
+    padding: 64px;
+    margin-bottom: 2px;
+  }
+  .campaign-tag {
+    font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 24px;
+  }
+  .campaign-hero h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 54px);
+    font-weight: 400; color: var(--warm-white);
+    margin-bottom: 16px;
+  }
+  .campaign-hero h2 em { color: var(--accent); font-style: italic; }
+  .campaign-hero p { color: #A09A94; font-size: 16px; max-width: 560px; line-height: 1.8; }
+
+  .campaign-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px;
+  }
+  .campaign-block {
+    background: var(--warm-white);
+    padding: 36px 28px;
+    border: 1px solid var(--border);
+  }
+  .campaign-block-label {
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 20px;
+  }
+  .campaign-block h3 { font-size: 15px; font-weight: 500; margin-bottom: 12px; }
+  .campaign-block p { font-size: 13px; color: var(--mid); line-height: 1.7; }
+  .campaign-block ul { list-style: none; padding: 0; }
+  .campaign-block ul li {
+    font-size: 13px; color: var(--mid); padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: flex-start; gap: 8px;
+  }
+  .campaign-block ul li:last-child { border-bottom: none; }
+  .campaign-block ul li::before { content: '—'; color: var(--accent); flex-shrink: 0; }
+
+  .campaign-full {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    padding: 48px 56px;
+    margin-top: 2px;
+  }
+
+  /* EMAIL FLOW */
+  .email-flow { margin-top: 32px; }
+  .email-step {
+    display: flex; gap: 24px; padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .email-step:last-child { border-bottom: none; }
+  .step-day {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px; color: var(--accent);
+    min-width: 80px; padding-top: 2px;
+    font-style: italic;
+  }
+  .step-content h4 { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+  .step-content p { font-size: 13px; color: var(--mid); }
+
+  /* IG MOCKUPS */
+  .ig-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 32px;
+  }
+  .ig-card {
+    aspect-ratio: 4/5;
+    background: var(--charcoal);
+    display: flex; flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .ig-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
+  }
+  .ig-card-inner { position: relative; z-index: 1; }
+  .ig-tag {
+    font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 6px;
+  }
+  .ig-caption { font-size: 13px; color: white; line-height: 1.5; }
+  .ig-bg-1 { background: #2C2420; }
+  .ig-bg-2 { background: #1A2020; }
+  .ig-bg-3 { background: #241820; }
+
+  /* KPI GRID */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-top: 32px;
+  }
+  .kpi-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    padding: 28px 24px;
+    text-align: center;
+  }
+  .kpi-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px; font-weight: 400;
+    color: var(--charcoal); margin-bottom: 4px;
+  }
+  .kpi-label { font-size: 12px; color: var(--muted); letter-spacing: 0.05em; }
+
+  /* COVER LETTER */
+  .letter-wrap {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    padding: 64px 72px;
+    max-width: 720px;
+    margin: 48px auto 0;
+    line-height: 1.9;
+  }
+  .letter-header { margin-bottom: 40px; }
+  .letter-header .name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; margin-bottom: 4px;
+  }
+  .letter-header .meta { font-size: 13px; color: var(--mid); }
+  .letter-date { font-size: 13px; color: var(--muted); margin-bottom: 32px; }
+  .letter-body p { margin-bottom: 20px; font-size: 15px; color: var(--charcoal); }
+  .letter-sign { margin-top: 36px; }
+  .letter-sign .sign-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-style: italic;
+    margin-top: 8px;
+  }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 80px; align-items: start; }
+  .about-left h2 { margin-bottom: 12px; }
+  .about-left p { font-size: 14px; color: var(--mid); }
+  .skills-list { margin-top: 40px; }
+  .skill-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 0; border-bottom: 1px solid var(--border);
+  }
+  .skill-row:first-child { border-top: 1px solid var(--border); }
+  .skill-name { font-size: 14px; }
+  .skill-tag {
+    font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--accent); background: var(--accent-light);
+    padding: 4px 10px;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px;
+    display: flex; justify-content: space-between; align-items: center;
+    max-width: 1000px; margin: 0 auto;
+  }
+  footer p { font-size: 13px; color: var(--muted); }
+  footer a { color: var(--charcoal); text-decoration: none; font-size: 13px; }
+
+  @media (max-width: 700px) {
+    nav { padding: 16px 20px; }
+    .nav-links { display: none; }
+    .hero, section { padding: 80px 20px 60px; }
+    .angle-grid, .campaign-grid, .kpi-grid { grid-template-columns: 1fr; }
+    .angle-card { border-right: 1px solid var(--border) !important; border-bottom: none !important; }
+    .angle-card:last-child { border-bottom: 1px solid var(--border) !important; }
+    .campaign-full { padding: 32px 24px; }
+    .letter-wrap { padding: 36px 28px; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .ig-strip { grid-template-columns: 1fr; }
+    .kpi-grid { grid-template-columns: 1fr 1fr; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-name">Lojain Othman</div>
+  <div class="nav-links">
+    <a href="#angle">Why me</a>
+    <a href="#campaign">Campaign</a>
+    <a href="#letter">Cover letter</a>
+    <a href="#about">Background</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div style="max-width: 1000px; margin: 0 auto; padding: 0 40px;">
+  <div class="hero" style="padding-left: 0; padding-right: 0;">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Application — Marketing Manager</div>
+      <h1>Marketing that starts <em>where the customer is.</em></h1>
+      <p class="hero-sub">I'm Lojain — a CX and retention specialist who's spent years understanding exactly what makes people buy, stay, and come back. I made this for Havenly.</p>
+      <a href="#campaign" class="btn">See the campaign</a>
+      <a href="#letter" class="btn btn-ghost">Read the letter</a>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- WHY ME -->
+<section id="angle">
+  <div class="section-label">Why this makes sense</div>
+  <h2>Most marketers guess what customers want.<br>I already know.</h2>
+  <p style="color: var(--mid); max-width: 560px; margin-top: 16px;">Three years at the intersection of customer behaviour, retention strategy, and campaign execution — across DTC brands on Shopify and Klaviyo.</p>
+
+  <div class="angle-grid">
+    <div class="angle-card">
+      <div class="angle-num">01</div>
+      <h3>Customer insight, not assumptions</h3>
+      <p>I've read thousands of customer messages — what frustrates them, what excites them, what language makes them open emails. For a brand like Havenly, that's the difference between a campaign that lands and one that doesn't.</p>
+    </div>
+    <div class="angle-card">
+      <div class="angle-num">02</div>
+      <h3>Klaviyo campaigns I've actually shipped</h3>
+      <p>Built and deployed multi-phase email sequences with conditional logic, suppression rules, and A/B tested subject lines — not just planned them. I know the platform, not just the theory.</p>
+    </div>
+    <div class="angle-card">
+      <div class="angle-num">03</div>
+      <h3>Retention thinking</h3>
+      <p>Havenly doesn't just need people to buy once. The "Havenly Favourites" kit model is a retention play. My background in lifecycle flows and post-purchase journeys maps directly onto that.</p>
+    </div>
+    <div class="angle-card">
+      <div class="angle-num">04</div>
+      <h3>Built for Shopify-first brands</h3>
+      <p>I've lived inside Shopify, ShipBob, and Klaviyo daily. I understand how the stack works — which means campaigns I plan can actually be executed, not handed off with a prayer.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CAMPAIGN -->
+<section id="campaign" style="padding-bottom: 0;">
+  <div class="section-label">Mock campaign pitch</div>
+</section>
+
+<div style="max-width: 1000px; margin: 0 auto; padding: 0 40px 100px;">
+
+  <div class="campaign-hero">
+    <div class="campaign-tag">Campaign concept — Q3 2025</div>
+    <h2>"Your feed <em>found it</em> first."</h2>
+    <p>Havenly's real product isn't makeup — it's the feeling of being the person in your friend group who always knows what's trending before anyone else. This campaign makes that identity the hero.</p>
+  </div>
+
+  <div class="campaign-grid">
+    <div class="campaign-block">
+      <div class="campaign-block-label">The insight</div>
+      <h3>Trend-spotting is an identity, not a purchase reason</h3>
+      <p>Havenly customers don't just want Rhode. They want to be the person who had Rhode before it sold out in Egypt. The campaign speaks to that identity — not the product.</p>
+    </div>
+    <div class="campaign-block">
+      <div class="campaign-block-label">Target audience</div>
+      <h3>Egyptian women, 18–32, IG-native, beauty-obsessed</h3>
+      <p>They follow global beauty accounts. They screenshot Sabrina Carpenter's gloss. They share "found it" moments. They respond to urgency, curation, and community.</p>
+    </div>
+    <div class="campaign-block">
+      <div class="campaign-block-label">Campaign duration</div>
+      <h3>6-week rolling drop series</h3>
+      <p>Each "drop" is treated as a cultural event, not a restock notification. Tied to global viral moments and teased 72 hours in advance across IG and email.</p>
+    </div>
+  </div>
+
+  <!-- IG Content -->
+  <div class="campaign-full">
+    <div class="campaign-block-label">Instagram content series</div>
+    <h3 style="font-size: 18px; font-weight: 500; margin-bottom: 8px;">3 content pillars</h3>
+    <p style="font-size: 14px; color: var(--mid); margin-bottom: 28px;">Each pillar has its own look, cadence, and purpose — together they build hype, community, and conversion.</p>
+
+    <div class="ig-strip">
+      <div class="ig-card ig-bg-1">
+        <div class="ig-card-inner">
+          <div class="ig-tag">Pillar 01 — Drop Alerts</div>
+          <div class="ig-caption">"Your 72-hour warning. Rhode Peptide Lip Tint drops this Friday. Egypt-exclusive. Set your reminder." ⏱</div>
+        </div>
+      </div>
+      <div class="ig-card ig-bg-2">
+        <div class="ig-card-inner">
+          <div class="ig-tag">Pillar 02 — The Edit</div>
+          <div class="ig-caption">"5 products your feed has been obsessing over. We have all of them. Here's how to wear them together." ✦</div>
+        </div>
+      </div>
+      <div class="ig-card ig-bg-3">
+        <div class="ig-card-inner">
+          <div class="ig-tag">Pillar 03 — Havenly Favourites</div>
+          <div class="ig-caption">"We built the kit so you don't have to. Our most-loved products, curated into one drop." 🤍</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Email Flow -->
+  <div class="campaign-full" style="margin-top: 2px;">
+    <div class="campaign-block-label">Klaviyo email drop sequence</div>
+    <h3 style="font-size: 18px; font-weight: 500; margin-bottom: 8px;">5-email drop cycle</h3>
+    <p style="font-size: 14px; color: var(--mid); margin-bottom: 4px;">Built around each product drop. Triggered by browse behaviour and purchase history segmentation.</p>
+
+    <div class="email-flow">
+      <div class="email-step">
+        <div class="step-day">Day −3</div>
+        <div class="step-content">
+          <h4>The tease</h4>
+          <p>"Something's coming to Egypt first. We're not saying what yet." — Subject line with 0 details. Open rate play on curiosity.</p>
+        </div>
+      </div>
+      <div class="email-step">
+        <div class="step-day">Day −1</div>
+        <div class="step-content">
+          <h4>The reveal</h4>
+          <p>Product name, one hero image, one sentence. Link to early-access sign-up for subscribers only. Creates list-building urgency.</p>
+        </div>
+      </div>
+      <div class="email-step">
+        <div class="step-day">Day 0</div>
+        <div class="step-content">
+          <h4>Drop day</h4>
+          <p>"It's here. And it won't be for long." — Stock scarcity framing, one CTA, mobile-first layout. No distractions.</p>
+        </div>
+      </div>
+      <div class="email-step">
+        <div class="step-day">Day +3</div>
+        <div class="step-content">
+          <h4>The pair</h4>
+          <p>Sent to purchasers only. "You got it. Here's what people are wearing it with." — Cross-sell into the "Havenly Favourites" kit.</p>
+        </div>
+      </div>
+      <div class="email-step">
+        <div class="step-day">Day +14</div>
+        <div class="step-content">
+          <h4>The loyalty nudge</h4>
+          <p>"You were one of the first to get it in Egypt." — Early-adopter identity reinforcement. Primes for next drop with sneak peek.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KPIs -->
+  <div class="campaign-full" style="margin-top: 2px;">
+    <div class="campaign-block-label">Success metrics</div>
+    <h3 style="font-size: 18px; font-weight: 500; margin-bottom: 24px;">What I'd track and why</h3>
+    <div class="kpi-grid" style="margin-top: 0;">
+      <div class="kpi-card">
+        <div class="kpi-number">↑ OR</div>
+        <div class="kpi-label">Email open rate vs. baseline</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-number">48h</div>
+        <div class="kpi-label">Sell-through window per drop</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-number">Kit %</div>
+        <div class="kpi-label">Havenly Favourites attach rate</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-number">RCR</div>
+        <div class="kpi-label">Repeat customer rate, month on month</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<hr class="divider">
+
+<!-- COVER LETTER -->
+<section id="letter">
+  <div class="section-label">Cover letter</div>
+  <h2>In my own words</h2>
+
+  <div class="letter-wrap">
+    <div class="letter-header">
+      <div class="name">Lojain Amr Othman</div>
+      <div class="meta">loginmohamed059@gmail.com &nbsp;·&nbsp; +20 100 079 2326 &nbsp;·&nbsp; Alexandria, Egypt</div>
+    </div>
+    <div class="letter-date">June 2025</div>
+
+    <div class="letter-body">
+      <p>To the Havenly team,</p>
+
+      <p>I'll be honest — I saw the story, and then I spent an hour on your page. I know Rhode's Lip Tint. I know why the Sabrina Carpenter perfume makes sense for you right now. And I know your "Havenly Favourites" kits are smarter than they look — they're not bundles, they're a curation point of view. That's what made me want to apply.</p>
+
+      <p>My background isn't traditional marketing. I've spent the past few years working in CX and retention — which sounds like a different discipline until you realise that every email sequence I've built, every campaign I've optimised, and every customer journey I've mapped started with one question: what do people actually want, and what language makes them act on it?</p>
+
+      <p>At Dijie, I built a 5-phase Klaviyo drop sequence from scratch — preorder delay comms, suppression logic, conditional triggers — for a US hardware brand that had never done it before. At Daxuen, I ran email campaigns and A/B tested subject lines until open rates moved. At Blackwell's, I sat between the CX and marketing teams, translating what customers were saying into content that landed.</p>
+
+      <p>What I want to bring to Havenly is that same thinking — but applied to product drops. You're not selling makeup. You're selling the feeling of being first. Every campaign should feel like a moment, not a notification. I made a mock campaign pitch to show you exactly what I mean — it's in this portfolio.</p>
+
+      <p>I'm based in Alexandria, I'm available immediately, and I'm genuinely excited about this. I'd love to talk.</p>
+    </div>
+
+    <div class="letter-sign">
+      <div style="font-size: 14px; color: var(--mid);">Warmly,</div>
+      <div class="sign-name">Lojain Othman</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">Background</div>
+  <div class="about-grid">
+    <div class="about-left">
+      <h2>The experience behind the pitch</h2>
+      <p style="margin-top: 12px;">CX & Retention Lead at Dijie · Quality Supervisor at Nominal · Email Marketing at Daxuen · SEO at Summit · Marketing degree, Alexandria University 2025</p>
+    </div>
+    <div class="about-right">
+      <div class="skills-list">
+        <div class="skill-row">
+          <span class="skill-name">Klaviyo — email sequences, A/B testing, flows</span>
+          <span class="skill-tag">Campaign</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">Customer journey mapping & lifecycle flows</span>
+          <span class="skill-tag">Retention</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">Shopify — product drops, customer data</span>
+          <span class="skill-tag">Platform</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">KPI frameworks & campaign analytics</span>
+          <span class="skill-tag">Analytics</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">TikTok & short-form content (Blackwell's)</span>
+          <span class="skill-tag">Content</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">SOP documentation & team training</span>
+          <span class="skill-tag">Ops</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">SEO — keyword research, content optimisation</span>
+          <span class="skill-tag">Growth</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<footer>
+  <p>Lojain Othman — prepared for Havenly Cosmetics, 2025</p>
+  <a href="mailto:loginmohamed059@gmail.com">loginmohamed059@gmail.com</a>
+</footer>
+
+</body>
+</html>
